@@ -1,0 +1,16 @@
+
+server:
+  port: 9090
+#  config to connect to the database
+spring:
+  application:
+    name: spring-boot-restful-api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test_db
+    username: postgres
+    password: 123 # your password of postgresql
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
