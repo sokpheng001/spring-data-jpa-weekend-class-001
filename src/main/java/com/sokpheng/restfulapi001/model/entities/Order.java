@@ -2,12 +2,8 @@ package com.sokpheng.restfulapi001.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Id;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import java.util.Date;
 import java.util.Set;
@@ -30,7 +26,6 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private Set<Product> products;
-
     @ManyToOne
     @JoinColumn(name = "customer_id")
     @JsonIgnore

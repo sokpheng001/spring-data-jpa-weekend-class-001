@@ -1,10 +1,13 @@
 package com.sokpheng.restfulapi001.model.service;
 
+import com.sokpheng.restfulapi001.exception.CustomerException;
 import com.sokpheng.restfulapi001.mapper.CustomerMapstruct;
 import com.sokpheng.restfulapi001.model.dto.CreateCustomerDto;
 import com.sokpheng.restfulapi001.model.dto.CustomerResponseDto;
 import com.sokpheng.restfulapi001.model.entities.Customer;
+import com.sokpheng.restfulapi001.model.entities.Order;
 import com.sokpheng.restfulapi001.model.repository.CustomerRepository;
+import com.sokpheng.restfulapi001.model.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +22,7 @@ import java.util.UUID;
 public class CustomerServiceImpl implements CustomerService{
     private final CustomerRepository customerRepository;
     private final CustomerMapstruct customerMapstruct;
+    private final OrderRepository orderRepository;
     @Override
     public  List<CustomerResponseDto> getAllCustomer() {
         // logic to map object here
@@ -34,12 +38,16 @@ public class CustomerServiceImpl implements CustomerService{
         }
         return customerResponseDtos;
     }
-
     @Override
     public CustomerResponseDto getCustomerByUuid(String uuid) {
+        Optional<Customer> customer =
+                Optional.ofNullable(customerRepository.findCustomerByUuid(uuid));
+        if(customer.isEmpty()){
+            throw new CustomerException("Customer is not found");
+        }
         // logic to map object here
         return customerMapstruct.mapFromCustomerToCustomerResponseDto(
-                customerRepository.findCustomerByUuid(uuid)
+                customer.get()
         );
     }
 
@@ -59,15 +67,16 @@ public class CustomerServiceImpl implements CustomerService{
                 customer
         );
     }
-
+    @Transactional
     @Override
     public String deleteUserByUuid(String uuid) {
         Optional<Customer> customer =
                 Optional.ofNullable(customerRepository.findCustomerByUuid(uuid));
-        if(customer.isPresent()){
-            customerRepository.delete(customer.get());
-            return uuid;
-        }
-        return null;
+        List<Order> orders = orderRepository
+                .findOrderByCustomerId(customer.get().getId());
+        orderRepository.deleteAll(orders);
+        customerRepository.delete(customer.get());
+        return uuid;
+
     }
 }

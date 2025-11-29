@@ -3,6 +3,7 @@ package com.sokpheng.restfulapi001.controller;
 import com.sokpheng.restfulapi001.model.dto.CreateCustomerDto;
 import com.sokpheng.restfulapi001.model.service.CustomerService;
 import com.sokpheng.restfulapi001.utils.ResponseTemplate;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,7 @@ public class CustomController {
     }
     @PostMapping
     public ResponseTemplate<Object> createNewCustomer
-            (@RequestBody CreateCustomerDto createCustomerDto){
+            (@RequestBody @Valid CreateCustomerDto createCustomerDto){
         return ResponseTemplate
                 .builder()
                 .status(HttpStatus.CREATED.toString())

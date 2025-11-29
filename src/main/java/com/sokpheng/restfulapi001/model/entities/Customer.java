@@ -1,7 +1,6 @@
 package com.sokpheng.restfulapi001.model.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,9 +25,10 @@ public class Customer {
     private String password;
     private Boolean isDeleted;
     private Boolean isVerified;
-
-    @OneToMany(mappedBy = "customer",
-            fetch = FetchType.EAGER, cascade =CascadeType.ALL, orphanRemoval = true)
-
-    private Set<Order> orders = new HashSet<>();
+//
+//    @OneToMany(mappedBy = "customer",
+//            fetch = FetchType.EAGER
+//            , cascade = CascadeType.ALL
+//            , orphanRemoval = true)
+//    private Set<Order> orders = new HashSet<>();
 }
