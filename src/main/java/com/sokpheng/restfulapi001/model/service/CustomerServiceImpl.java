@@ -9,6 +9,8 @@ import com.sokpheng.restfulapi001.model.entities.Order;
 import com.sokpheng.restfulapi001.model.repository.CustomerRepository;
 import com.sokpheng.restfulapi001.model.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -72,11 +74,21 @@ public class CustomerServiceImpl implements CustomerService{
     public String deleteUserByUuid(String uuid) {
         Optional<Customer> customer =
                 Optional.ofNullable(customerRepository.findCustomerByUuid(uuid));
+
         List<Order> orders = orderRepository
                 .findOrderByCustomerId(customer.get().getId());
+
         orderRepository.deleteAll(orders);
         customerRepository.delete(customer.get());
         return uuid;
 
+    }
+    @Override
+    public Page<CustomerResponseDto> getAllCustomersByPagination
+            (Pageable pageable) {
+        Page<Customer> customerPage = customerRepository
+                .findCustomersByIsDeletedIsFalse(pageable);
+        return customerPage
+                .map(customerMapstruct::mapFromCustomerToCustomerResponseDto);
     }
 }

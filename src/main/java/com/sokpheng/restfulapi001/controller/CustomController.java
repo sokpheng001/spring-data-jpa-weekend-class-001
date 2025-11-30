@@ -5,6 +5,7 @@ import com.sokpheng.restfulapi001.model.service.CustomerService;
 import com.sokpheng.restfulapi001.utils.ResponseTemplate;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,17 @@ import java.util.Date;
 @RequestMapping("/api/v1/customers")
 public class CustomController {
     private final CustomerService customerService;
+    @GetMapping("/paginate")
+    public ResponseTemplate<Object>
+    getAllCustomersByPaginate(Pageable pageable){
+        return ResponseTemplate
+                .builder()
+                .date(Date.from(Instant.now()))
+                .status(HttpStatus.OK.toString())
+                .message("Get All Customers by Pagination Successfully")
+                .data(customerService.getAllCustomersByPagination(pageable))
+                .build();
+    }
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResponseTemplate<Object> getAllCustomers(){

@@ -1,8 +1,6 @@
 package com.sokpheng.restfulapi001.utils;
 
 import com.sokpheng.restfulapi001.exception.CustomerException;
-import com.sokpheng.restfulapi001.model.entities.Customer;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.Instant;
 import java.util.Date;
-import java.util.Optional;
 
 @RestControllerAdvice
 

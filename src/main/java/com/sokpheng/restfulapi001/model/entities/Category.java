@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "categories")
@@ -15,7 +14,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String uuid;
-    @Column(length = 200, nullable = false)
+    @Column(length = 200, nullable = false, unique = true)
     private String categoryName;
     private Date createdDate;
     @Column(insertable = false)
