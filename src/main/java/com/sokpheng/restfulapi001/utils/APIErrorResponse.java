@@ -1,7 +1,5 @@
 package com.sokpheng.restfulapi001.utils;
-
 import lombok.Builder;
-
 import java.util.Date;
 
 @Builder

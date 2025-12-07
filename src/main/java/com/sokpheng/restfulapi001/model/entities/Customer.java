@@ -5,10 +5,6 @@ package com.sokpheng.restfulapi001.model.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "customers")

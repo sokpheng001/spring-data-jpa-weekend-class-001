@@ -57,7 +57,8 @@ public class CategoryServiceImpl implements CategoryService{
         if(category.isEmpty()){
             throw new RuntimeException("Category is not found");
         }
-        categoryRepository.delete(category.get());
+        category.get().setIsDeleted(true);
+        categoryRepository.save(category.get());
         return uuid;
     }
 

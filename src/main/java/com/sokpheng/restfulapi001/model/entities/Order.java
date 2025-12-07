@@ -18,6 +18,10 @@ public class Order {
     private String uuid;
     private String orderName;
     private Date orderedDate;
+    //
+    private Boolean isDeleted;
+    private String location;
+    private String status;// COMPLETED, PENDING, CANCELLED
 
     @ManyToMany
     @JoinTable(

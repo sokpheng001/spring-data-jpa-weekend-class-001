@@ -17,7 +17,6 @@ public class Category {
     @Column(length = 200, nullable = false, unique = true)
     private String categoryName;
     private Date createdDate;
-    @Column(insertable = false)
     private Boolean isDeleted;
     //
 //    @ManyToMany
