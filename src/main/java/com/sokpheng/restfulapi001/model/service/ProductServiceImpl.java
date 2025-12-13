@@ -15,10 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -56,16 +53,37 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Page<ResponseProductDto> getAllProducts(Pageable pageable) {
-        return null;
+        Page<Product> products = productRepository.findProductByIsDeletedIsFalse(pageable);
+        return products.map(productMapstruct::mapFromProductToResponseProductDto);
     }
 
     @Override
     public ResponseProductDto updateProductByUuid(String uuid, UpdateProductDto updateProductDto) {
-        return null;
+        Optional<Product> product = productRepository.findProductByUuid(uuid);
+        if(product.isEmpty()){
+            throw new RuntimeException("Product with uuid + " + uuid + "is not found");
+        }
+        product.get().setProductName(updateProductDto.productName());
+        // convert LocalDate to Date
+        Date updatedExpireDate = Date.from(updateProductDto.expireDate()
+                .atStartOfDay(ZoneId.systemDefault()).toInstant());
+        product.get().setExpireDate(updatedExpireDate);
+        productRepository.save(product.get());// save once again to update
+        return productMapstruct.mapFromProductToResponseProductDto(
+                product.get()
+        );
     }
 
     @Override
     public String deleteProductByUuid(String uuid) {
-        return "";
+        Optional<Product> product = productRepository.findProductByUuid(
+                uuid
+        );
+        if(product.isEmpty()){
+            throw new RuntimeException("Product with uuid + " + uuid + "is not found");
+        }
+        product.get().setIsDeleted(true);
+        productRepository.save(product.get());
+        return uuid;
     }
 }

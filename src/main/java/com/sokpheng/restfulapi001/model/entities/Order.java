@@ -32,6 +32,6 @@ public class Order {
     private Set<Product> products;
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    @JsonIgnore
+//    @JsonIgnore
     private Customer customer;
 }
