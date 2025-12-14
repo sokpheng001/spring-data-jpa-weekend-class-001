@@ -77,7 +77,6 @@ public class OrderServiceImpl implements OrderService{
         Page<Order> orderPage = orderRepository.findAllByIsDeletedIsFalse(pageable);
         return orderPage.map(orderMapStruct::mapFromOrderToOrderResponseDto);
     }
-
     @Override
     public List<OrderResponseDto> getOrderByCustomerUuid(String customerUuid) {
         Optional<List<Order>> orderList = orderRepository
