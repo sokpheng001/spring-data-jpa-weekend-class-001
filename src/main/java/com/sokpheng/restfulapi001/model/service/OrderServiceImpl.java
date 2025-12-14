@@ -105,20 +105,21 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Boolean updateOrderStatus(String status, String orderUuid) {
-        if(!status.equals(OrderStatus.PENDING.toString()) ||
-                !status.equals(OrderStatus.CANCEL.toString()) ||
-                !status.equals(OrderStatus.COMPLETED.toString())){
-            throw new RuntimeException("Your status is wrong, you must in three values: [PENDING, CANCEL, COMPLETED]");
+        if(status.equalsIgnoreCase("PENDING") ||
+                status.equalsIgnoreCase("CANCEL") ||
+                status.equalsIgnoreCase("COMPLETED")){
+            Optional<Order> order = orderRepository.findOrderByUuid(orderUuid);
+            if(order.isEmpty()){
+                throw new RuntimeException("Order is not found");
+            }else if(order.get().getIsDeleted()){
+                throw new RuntimeException("Order has been deleted");
+            }
+            // update status
+            order.get().setStatus(status);
+            orderRepository.save(order.get());
+            return true;
         }
-        Optional<Order> order = orderRepository.findOrderByUuid(orderUuid);
-        if(order.isEmpty()){
-            throw new RuntimeException("Order is not found");
-        }else if(order.get().getIsDeleted()){
-            throw new RuntimeException("Order has been deleted");
-        }
-        // update status
-        order.get().setStatus(status);
-        orderRepository.save(order.get());
-        return true;
+        throw new RuntimeException("Your status is wrong, you must be in three UPPERCASE values: [PENDING, CANCEL, COMPLETED]");
+
     }
 }

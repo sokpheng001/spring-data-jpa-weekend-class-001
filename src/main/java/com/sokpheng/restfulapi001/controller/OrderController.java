@@ -54,7 +54,7 @@ public class OrderController {
                 .data(orderService.getOrderByUuid(uuid))
                 .build();
     }
-    @PatchMapping("/")
+    @PatchMapping("")
     public ResponseTemplate<Object> updateOrderStatus(@RequestParam(name = "orderUuid")String uuid
             ,@RequestParam(name = "orderStatus") String status ){
         return ResponseTemplate.builder()
