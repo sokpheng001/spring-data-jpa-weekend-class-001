@@ -6,7 +6,6 @@ import lombok.Builder;
 
 @Builder
 public record CreateCustomerDto(
-
         @NotBlank(message = "Customer name must be not blank")
         @NotNull(message = "Customer name must be not null")
         String customerName,

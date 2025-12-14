@@ -11,7 +11,6 @@ import java.time.Instant;
 import java.util.Date;
 
 @RestControllerAdvice
-
 public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<APIErrorResponse> validateHandling
@@ -36,6 +35,18 @@ public class GlobalExceptionHandler {
                 .build();
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .body(apiErrorResponse);
+    }
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<APIErrorResponse> handleAnyError(RuntimeException exception){
+        APIErrorResponse apiErrorResponse
+                = APIErrorResponse.builder()
+                .status(HttpStatus.INTERNAL_SERVER_ERROR.toString())
+                .timeStamp(Date.from(Instant.now()))
+                .errorMessage(exception.getMessage())
+                .build();
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(apiErrorResponse);
     }
 }

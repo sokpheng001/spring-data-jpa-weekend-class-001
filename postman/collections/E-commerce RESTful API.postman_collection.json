@@ -498,7 +498,7 @@
             "method": "PATCH",
             "header": [],
             "url": {
-              "raw": "localhost:9090/api/v1/orders?orderUuid=31c01ce8-9e07-44cb-ab84-0d7e1a9bd4cf&orderStatus=COMPLETE",
+              "raw": "localhost:9090/api/v1/orders?orderUuid=31c01ce8-9e07-44cb-ab84-0d7e1a9bd4cf&orderStatus=COMPLETED",
               "host": [
                 "localhost"
               ],
@@ -515,8 +515,7 @@
                 },
                 {
                   "key": "orderStatus",
-                  "value": "COMPLETE",
-                  "type": "text"
+                  "value": "COMPLETED"
                 }
               ]
             }
@@ -547,6 +546,24 @@
         }
       ],
       "id": "c6975640-477e-440d-aa82-3688910a386d"
+    },
+    {
+      "name": "File",
+      "item": [
+        {
+          "name": "New Request",
+          "id": "7d4e41ca-1f61-4d9d-af36-f6467613f760",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "ef2685a9-12e3-4d7a-97cc-79452248f6f1"
     }
   ]
 }
