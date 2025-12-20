@@ -89,7 +89,7 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "localhost:9090/api/v1/customers/8d025056-03a3-4c64-9975-f7d4ec2aa457",
+              "raw": "localhost:9090/api/v1/customers/bd19fded-7f54-40b7-a758-1276905caace",
               "host": [
                 "localhost"
               ],
@@ -98,7 +98,7 @@
                 "api",
                 "v1",
                 "customers",
-                "8d025056-03a3-4c64-9975-f7d4ec2aa457"
+                "bd19fded-7f54-40b7-a758-1276905caace"
               ]
             }
           },
@@ -551,13 +551,72 @@
       "name": "File",
       "item": [
         {
-          "name": "New Request",
-          "id": "7d4e41ca-1f61-4d9d-af36-f6467613f760",
+          "name": "Upload Single File Copy",
+          "id": "f9a0f6ed-0e58-4725-80ee-f5a5730e156b",
           "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "uuid": "d02400f7-79b0-406b-be7e-281542838180",
+                  "src": [
+                    "/C:/Users/Kim Chansokpheng/Desktop/Turtle andd Rabit.jpg"
+                  ]
+                }
+              ]
+            },
             "url": {
-              "raw": ""
+              "raw": "localhost:9090/api/v1/files/upload",
+              "host": [
+                "localhost"
+              ],
+              "port": "9090",
+              "path": [
+                "api",
+                "v1",
+                "files",
+                "upload"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Multiple files upload",
+          "id": "39439f9c-2071-454b-8ddb-1b4b590cf7a7",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "type": "file",
+                  "uuid": "c6ed92f0-f24d-4ed3-add5-5dd08375ccd5",
+                  "src": [
+                    "/C:/Users/Kim Chansokpheng/Desktop/spring framework.jpg",
+                    "/C:/Users/Kim Chansokpheng/Desktop/Turtle andd Rabit.jpg"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:9090/api/v1/files/upload-multi",
+              "host": [
+                "localhost"
+              ],
+              "port": "9090",
+              "path": [
+                "api",
+                "v1",
+                "files",
+                "upload-multi"
+              ]
             }
           },
           "response": []

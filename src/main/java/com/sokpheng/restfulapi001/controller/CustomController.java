@@ -1,3 +1,4 @@
+
 package com.sokpheng.restfulapi001.controller;
 
 import com.sokpheng.restfulapi001.model.dto.CreateCustomerDto;
@@ -7,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
@@ -17,6 +19,7 @@ import java.util.Date;
 @RequestMapping("/api/v1/customers")
 public class CustomController {
     private final CustomerService customerService;
+
     @GetMapping("/paginate")
     public ResponseTemplate<Object>
     getAllCustomersByPaginate(Pageable pageable){

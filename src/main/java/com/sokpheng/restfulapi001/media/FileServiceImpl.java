@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +21,7 @@ public class FileServiceImpl implements FileService{
     private String previewPath;
     @Value("${file.download-path}")
     private String downloadPath;
+    //
     private String uploadLogic(MultipartFile multipartFile){
         // get position of the dot symbol in order to get the location of extension
         int dotSymbolPosition = multipartFile
@@ -49,13 +53,28 @@ public class FileServiceImpl implements FileService{
                 .size(file.getSize())
                 .type(file.getContentType())
                 .previewUrl(previewPath+fileName)
-                .downloadUrl(downloadPath+"api/v1/files"+fileName)
+                .downloadUrl(downloadPath+"api/v1/files/"+fileName)
                 .build();
     }
 
     @Override
     public List<FileResponseTemplate> uploadMultipleFiles(List<MultipartFile> files) {
-        return List.of();
+        // logic for uploading the multiple files in once
+        List<FileResponseTemplate> fileResponseTemplateList
+                 = new ArrayList<>();
+        for(MultipartFile file: files){
+            String newFileName = uploadLogic(file);
+            FileResponseTemplate fileResponseTemplate
+                     = FileResponseTemplate.builder()
+                    .fileName(newFileName)
+                    .size(file.getSize())
+                    .type(file.getContentType())
+                    .previewUrl(previewPath+newFileName)
+                    .downloadUrl(downloadPath+"api/v1/files/" + newFileName)
+                    .build();
+            fileResponseTemplateList.add(fileResponseTemplate);
+        }
+        return fileResponseTemplateList;
     }
 
     @Override

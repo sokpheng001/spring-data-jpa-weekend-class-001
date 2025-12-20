@@ -3,6 +3,10 @@ server:
   port: 9090
 #  config to connect to the database
 spring:
+  security:
+    user:
+      password: 123
+      name: jame
   application:
     name: spring-boot-restful-api
   datasource:
@@ -14,6 +18,11 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+#    validate file size
+  servlet:
+    multipart:
+      max-request-size: 1MB # size of files users can request from api
+      max-file-size: 1MB #files size that users able to upload
 
 file:
   upload-location: D:\\Multi-programming_languages\\Spring boot\\spring-boot-short-course\\restful-api-001\\uploads
