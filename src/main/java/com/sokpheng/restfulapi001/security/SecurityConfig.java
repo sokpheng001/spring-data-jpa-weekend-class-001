@@ -1,14 +1,19 @@
 package com.sokpheng.restfulapi001.security;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-
-
 
 
 @Configuration
@@ -17,32 +22,28 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity)
     throws Exception{
-        //
-        // security config here coding
         httpSecurity
-                // disable cross site origin
                 .cors(AbstractHttpConfigurer::disable)
-                // disable cross site request forgery
                 .csrf(AbstractHttpConfigurer::disable)
-                // the place for allow or deny the request to any specific api endpoint
+                // this for authentication and authorization
                 .authorizeHttpRequests(
-                        // lambda expression syntax
-                        re->re
-                                /*   /api/v1/customer/123 -> allow only but only the GET http method
-                                     /api/v1/customer/pagination
-                                     /api/v1/customer?delete=123
-                                     /api/v1/customer?id=123&name=jame
-                                */
-                                .requestMatchers(HttpMethod.GET,"/api/v1/customers/**").permitAll()
-                                .anyRequest().authenticated()
-                                // allow all requests without authentication
-//                                .anyRequest().permitAll()
-                                /* deny all of the requests meaning need to authenticate first
-                                before access the api
-                                 */
-//                                .anyRequest().authenticated()
-
+                        re->re.anyRequest().permitAll()
                 );
+        // enable login form in the web browser
+        httpSecurity.formLogin(Customizer.withDefaults());
         return httpSecurity.build();
+    }
+    @Bean
+    public InMemoryUserDetailsManager detailsManager(){
+        UserDetails user = User
+                .withUsername("jame")
+                .password(passwordEncoder().encode("123"))
+                .roles("USER")
+                .build();
+        return new InMemoryUserDetailsManager(user);
+    }
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

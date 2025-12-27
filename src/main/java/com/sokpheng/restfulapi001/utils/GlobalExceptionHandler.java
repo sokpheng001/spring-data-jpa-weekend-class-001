@@ -1,6 +1,9 @@
 package com.sokpheng.restfulapi001.utils;
 
+import com.sokpheng.restfulapi001.exception.CategoryNotFoundException;
 import com.sokpheng.restfulapi001.exception.CustomerException;
+import com.sokpheng.restfulapi001.exception.NotFoundOrderException;
+import com.sokpheng.restfulapi001.exception.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -37,16 +40,41 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.NOT_FOUND)
                 .body(apiErrorResponse);
     }
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<APIErrorResponse> handleAnyError(RuntimeException exception){
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<APIErrorResponse> handleProductNotFound(ProductNotFoundException exception){
         APIErrorResponse apiErrorResponse
                 = APIErrorResponse.builder()
-                .status(HttpStatus.INTERNAL_SERVER_ERROR.toString())
+                .status(HttpStatus.NOT_FOUND.toString())
                 .timeStamp(Date.from(Instant.now()))
                 .errorMessage(exception.getMessage())
                 .build();
         return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .status(HttpStatus.NOT_FOUND)
+                .body(apiErrorResponse);
+    }
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<APIErrorResponse> handleCategoryNotFound(CategoryNotFoundException exception){
+        APIErrorResponse apiErrorResponse
+                = APIErrorResponse.builder()
+                .status(HttpStatus.NOT_FOUND.toString())
+                .timeStamp(Date.from(Instant.now()))
+                .errorMessage(exception.getMessage())
+                .build();
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(apiErrorResponse);
+    }
+    @ExceptionHandler(NotFoundOrderException.class)
+    public ResponseEntity<APIErrorResponse> handleOrderNotFound(NotFoundOrderException exception){
+        APIErrorResponse apiErrorResponse
+                = APIErrorResponse.builder()
+                .status(HttpStatus.NOT_FOUND.toString())
+                .timeStamp(Date.from(Instant.now()))
+                .errorMessage(exception.getMessage())
+                .build();
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
                 .body(apiErrorResponse);
     }
 }
+

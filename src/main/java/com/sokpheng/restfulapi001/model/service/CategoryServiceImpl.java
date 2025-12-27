@@ -1,5 +1,6 @@
 package com.sokpheng.restfulapi001.model.service;
 
+import com.sokpheng.restfulapi001.exception.CategoryNotFoundException;
 import com.sokpheng.restfulapi001.mapper.CategoryMapstruct;
 import com.sokpheng.restfulapi001.model.dto.CategoryResponseDto;
 import com.sokpheng.restfulapi001.model.dto.CreateCategoryDto;
@@ -46,7 +47,7 @@ public class CategoryServiceImpl implements CategoryService{
     public CategoryResponseDto getCategoryByUuid(String uuid) {
         Optional<Category> category = categoryRepository.findCategoryByUuid(uuid);
         if(category.isEmpty()){
-            throw new RuntimeException("Category is not found");
+            throw new CategoryNotFoundException("Category is not found");
         }
         return categoryMapstruct.mapFromCategoryToCategoryResponseDto(category.get());
     }
@@ -55,7 +56,7 @@ public class CategoryServiceImpl implements CategoryService{
     public String deleteCategoryByUuid(String uuid) {
         Optional<Category> category = categoryRepository.findCategoryByUuid(uuid);
         if(category.isEmpty()){
-            throw new RuntimeException("Category is not found");
+            throw new CategoryNotFoundException("Category is not found");
         }
         category.get().setIsDeleted(true);
         categoryRepository.save(category.get());
@@ -66,7 +67,7 @@ public class CategoryServiceImpl implements CategoryService{
     public CategoryResponseDto updateCategoryByUuid(String uuid, UpdateCategoryDto updateCategoryDto) {
         Optional<Category> category = categoryRepository.findCategoryByUuid(uuid);
         if(category.isEmpty()){
-            throw new RuntimeException("Category is not found");
+            throw new CategoryNotFoundException("Category is not found");
         }
         category.get().setCategoryName(updateCategoryDto.categoryName());
         // update

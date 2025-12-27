@@ -1,5 +1,7 @@
 package com.sokpheng.restfulapi001.model.service;
 
+import com.sokpheng.restfulapi001.exception.NotFoundOrderException;
+import com.sokpheng.restfulapi001.exception.ProductNotFoundException;
 import com.sokpheng.restfulapi001.mapper.OrderMapStruct;
 import com.sokpheng.restfulapi001.model.dto.OrderCreateDto;
 import com.sokpheng.restfulapi001.model.dto.OrderResponseDto;
@@ -40,9 +42,9 @@ public class OrderServiceImpl implements OrderService{
         for(String pUuid: createDto.productUuids()){
             Optional<Product> p = productRepository.findProductByUuid(pUuid);
             if(p.isPresent() && p.get().getIsDeleted().equals(true)){
-                throw new RuntimeException("Product is deleted");
+                throw new ProductNotFoundException("Product is deleted");
             }else if(p.isEmpty()){
-                throw new RuntimeException("Product is not found");
+                throw new ProductNotFoundException("Product is not found");
             }
             products.add(p.get());
         }
@@ -63,9 +65,9 @@ public class OrderServiceImpl implements OrderService{
     public String deleteOrderByUuid(String uuid) {
         Optional<Order> order = orderRepository.findOrderByUuid(uuid);
         if(order.isEmpty()){
-            throw new RuntimeException("Order is not found");
+            throw new NotFoundOrderException("Order is not found");
         }else if(order.get().getIsDeleted().equals(true)){
-            throw new RuntimeException("The order wanted to delete is already deleted");
+            throw new NotFoundOrderException("The order wanted to delete is already deleted");
         }
         order.get().setIsDeleted(true);
         orderRepository.save(order.get());
@@ -82,7 +84,7 @@ public class OrderServiceImpl implements OrderService{
         Optional<List<Order>> orderList = orderRepository
                 .findAllByCustomer_Uuid(customerUuid);
         if(orderList.isEmpty()){
-            throw new RuntimeException("No order for this customer");
+            throw new NotFoundOrderException("No order for this customer");
         }
         return orderList.get().stream().map(
                 orderMapStruct::mapFromOrderToOrderResponseDto
@@ -96,7 +98,7 @@ public class OrderServiceImpl implements OrderService{
 //        );
         Optional<Order> order = orderRepository.findOrderByUuid(uuid);
         if(order.isEmpty()){
-            throw new RuntimeException("Order is not found");
+            throw new NotFoundOrderException("Order is not found");
         }
         return orderMapStruct.mapFromOrderToOrderResponseDto(
                 order.get()

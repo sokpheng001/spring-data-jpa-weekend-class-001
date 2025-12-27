@@ -3,10 +3,6 @@ server:
   port: 9090
 #  config to connect to the database
 spring:
-  security:
-    user:
-      password: 123
-      name: jame
   application:
     name: spring-boot-restful-api
   datasource:

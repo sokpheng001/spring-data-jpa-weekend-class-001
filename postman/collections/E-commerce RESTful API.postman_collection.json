@@ -300,6 +300,21 @@
           "name": "Get All Products",
           "id": "85781231-4ea7-4bbf-b8d4-6e5180e455f6",
           "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "5a6df9ed-8dc4-4420-a53d-0f9e383e97a9",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "user",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -316,11 +331,13 @@
               "query": [
                 {
                   "key": "page",
-                  "value": "0"
+                  "value": "0",
+                  "uuid": "da7247ef-f3df-48d7-a07c-443e3f3e5910"
                 },
                 {
                   "key": "size",
-                  "value": "2"
+                  "value": "2",
+                  "uuid": "7f1b3955-ccd2-48fa-a1fd-a8b97024011c"
                 }
               ]
             }

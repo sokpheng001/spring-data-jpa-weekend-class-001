@@ -1,5 +1,7 @@
 package com.sokpheng.restfulapi001.model.service;
 
+import com.sokpheng.restfulapi001.exception.CategoryNotFoundException;
+import com.sokpheng.restfulapi001.exception.ProductNotFoundException;
 import com.sokpheng.restfulapi001.mapper.ProductMapstruct;
 import com.sokpheng.restfulapi001.model.dto.CreateProductDto;
 import com.sokpheng.restfulapi001.model.dto.ResponseProductDto;
@@ -41,7 +43,7 @@ public class ProductServiceImpl implements ProductService{
                     .findCategoryByCategoryName(categoryName).orElseThrow();
             // check the category is deleted or not before adding to the Product
             if(category.getIsDeleted().equals(true)){
-                throw new RuntimeException("Category Drink does exist");
+                throw new CategoryNotFoundException("Category Drink does exist");
             }
             categories.add(category);
         }
@@ -61,7 +63,7 @@ public class ProductServiceImpl implements ProductService{
     public ResponseProductDto updateProductByUuid(String uuid, UpdateProductDto updateProductDto) {
         Optional<Product> product = productRepository.findProductByUuid(uuid);
         if(product.isEmpty()){
-            throw new RuntimeException("Product with uuid + " + uuid + "is not found");
+            throw new ProductNotFoundException("Product with uuid + " + uuid + "is not found");
         }
         product.get().setProductName(updateProductDto.productName());
         // convert LocalDate to Date
@@ -80,7 +82,7 @@ public class ProductServiceImpl implements ProductService{
                 uuid
         );
         if(product.isEmpty()){
-            throw new RuntimeException("Product with uuid + " + uuid + "is not found");
+            throw new ProductNotFoundException("Product with uuid + " + uuid + "is not found");
         }
         product.get().setIsDeleted(true);
         productRepository.save(product.get());
