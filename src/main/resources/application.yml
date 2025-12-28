@@ -3,6 +3,16 @@ server:
   port: 9090
 #  config to connect to the database
 spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            jwk-set-uri: http://localhost:8080/realms/springboot/protocol/openid-connect/certs
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/springboot
+
   application:
     name: spring-boot-restful-api
   datasource:

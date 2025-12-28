@@ -1,0 +1,390 @@
+{
+  "info": {
+    "_postman_id": "a662a3d9-89df-4f31-b322-789011ec2acb",
+    "name": "Authorization Server",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "keyloak",
+      "item": [
+        {
+          "name": "Get token by password",
+          "item": [
+            {
+              "name": "Get token by password",
+              "id": "ddc9baee-9a28-45bc-b7a4-1fc833073ad0",
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "password",
+                      "value": "XDRyKMqsg6Y7MAqs0fC5n1v4WRB3WbPP",
+                      "type": "string"
+                    },
+                    {
+                      "key": "username",
+                      "value": "spring",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "grant_type",
+                      "value": "password",
+                      "type": "text",
+                      "uuid": "04c22fc3-5f97-46b0-9699-76befd12060e"
+                    },
+                    {
+                      "key": "username",
+                      "value": "jelly",
+                      "type": "text",
+                      "uuid": "57e54c82-7e47-46cf-88fb-93a25daed91a"
+                    },
+                    {
+                      "key": "password",
+                      "value": "123",
+                      "type": "text",
+                      "uuid": "472a4725-d2a5-413c-a23d-7d74d0d06980"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "spring",
+                      "type": "text",
+                      "uuid": "42760f7a-2e4a-46a7-9b42-632c9a8c4993"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:8080/realms/springboot/protocol/openid-connect/token",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "realms",
+                    "springboot",
+                    "protocol",
+                    "openid-connect",
+                    "token"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "4099f01f-c93c-4e6e-98d7-f9c1127e9989"
+        },
+        {
+          "name": "Get Token by Authorization Code",
+          "item": [
+            {
+              "name": "Get Authorization Code for token",
+              "id": "0dc09951-a213-462e-8899-6991a1261a62",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": []
+                },
+                "url": {
+                  "raw": "http://localhost:8080/realms/springboot/protocol/openid-connect/auth?client_id=spring&redirect_uri=https://localhost:9090&response_type=code",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "realms",
+                    "springboot",
+                    "protocol",
+                    "openid-connect",
+                    "auth"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "spring",
+                      "uuid": "a10489fa-126d-4088-a4ea-8201e942a551"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "https://localhost:9090",
+                      "uuid": "cb929396-0270-4f49-bcb7-20b3428def72"
+                    },
+                    {
+                      "key": "response_type",
+                      "value": "code",
+                      "uuid": "4d387d70-0cb0-4d5a-a8e8-e6a7adcacbb6"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "openid email profile",
+                      "uuid": "8f6875a8-b585-47e9-961f-a250c295bd21",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get token",
+              "id": "9f654097-ad93-46b3-8cc6-a54641155488",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "text",
+                      "uuid": "04c22fc3-5f97-46b0-9699-76befd12060e"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "spring",
+                      "type": "text",
+                      "uuid": "42760f7a-2e4a-46a7-9b42-632c9a8c4993"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "https://localhost:9090",
+                      "type": "text",
+                      "uuid": "e45cc8da-c95c-4cfc-8fbd-1b5df2398ee6"
+                    },
+                    {
+                      "key": "client_secret",
+                      "value": "XDRyKMqsg6Y7MAqs0fC5n1v4WRB3WbPP",
+                      "type": "text",
+                      "uuid": "2b10e2fb-c653-4f30-ae81-583b04fbcac7"
+                    },
+                    {
+                      "key": "code",
+                      "value": "abfc497f-d83d-642b-d072-1bc3845bcbb1.3dfbcb3e-0fc1-99a2-5a02-840bf9c919fc.71872d2d-e18f-489c-8afe-adfe64ad1e69",
+                      "type": "text",
+                      "uuid": "b3429d26-7fdb-45bc-8c30-9a5788bf7f35"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:8080/realms/springboot/protocol/openid-connect/token",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "realms",
+                    "springboot",
+                    "protocol",
+                    "openid-connect",
+                    "token"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "a3ba31a5-dd17-4380-ae94-5cac7eb57bb1"
+        },
+        {
+          "name": "Get token by PKCE",
+          "item": [
+            {
+              "name": "Get Authorization Code by PKCE",
+              "id": "d1e06cef-7c8b-4bb3-9e47-253b3b6ac9d3",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": []
+                },
+                "url": {
+                  "raw": "http://localhost:8080/realms/springboot/protocol/openid-connect/auth?client_id=spring&redirect_uri=https://www.keycloak.org/app/&response_type=code&code_challenge=DBS6UZZT6sgBuBH1i3-d3_wWyF-dHxo5Y2-VLtNga6s&code_challenge_method=S256",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "realms",
+                    "springboot",
+                    "protocol",
+                    "openid-connect",
+                    "auth"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "spring",
+                      "uuid": "a10489fa-126d-4088-a4ea-8201e942a551"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "https://www.keycloak.org/app/",
+                      "uuid": "cb929396-0270-4f49-bcb7-20b3428def72"
+                    },
+                    {
+                      "key": "response_type",
+                      "value": "code",
+                      "uuid": "4d387d70-0cb0-4d5a-a8e8-e6a7adcacbb6"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "openid email profile",
+                      "uuid": "8f6875a8-b585-47e9-961f-a250c295bd21",
+                      "disabled": true
+                    },
+                    {
+                      "key": "code_challenge",
+                      "value": "DBS6UZZT6sgBuBH1i3-d3_wWyF-dHxo5Y2-VLtNga6s",
+                      "uuid": "418394ca-3472-4158-b4cb-6b2b28839aa1"
+                    },
+                    {
+                      "key": "code_challenge_method",
+                      "value": "S256",
+                      "uuid": "7f2d2839-6b5d-401c-97de-4f5b6583dfc1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Token",
+              "id": "f33872c0-64de-43bb-b289-d4cdba90674a",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "text",
+                      "uuid": "04c22fc3-5f97-46b0-9699-76befd12060e"
+                    },
+                    {
+                      "key": "client_secret",
+                      "value": "XDRyKMqsg6Y7MAqs0fC5n1v4WRB3WbPP",
+                      "type": "text",
+                      "uuid": "2b10e2fb-c653-4f30-ae81-583b04fbcac7"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "spring",
+                      "type": "text",
+                      "uuid": "42760f7a-2e4a-46a7-9b42-632c9a8c4993"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "https://www.keycloak.org/app/",
+                      "type": "text",
+                      "uuid": "e45cc8da-c95c-4cfc-8fbd-1b5df2398ee6"
+                    },
+                    {
+                      "key": "code_verifier",
+                      "value": "khx-1fY7OFhOJJSW4zdBpVJcvIh0G-VKmbKiUUWpAZtDPlWx98V0pUkGv3zFf_5CUZqdhUeGLXJs3mV1tpVZI9G1pIecWdVnmkeI6PiDRKgnFgqfyyG5YiqaHSi_gwEp",
+                      "type": "text",
+                      "uuid": "f1592390-8ebc-434b-98be-bc418fbc6c93"
+                    },
+                    {
+                      "key": "code",
+                      "value": "1af096a5-a28f-74a7-233d-597911b117e5.3dfbcb3e-0fc1-99a2-5a02-840bf9c919fc.71872d2d-e18f-489c-8afe-adfe64ad1e69",
+                      "type": "text",
+                      "uuid": "b3429d26-7fdb-45bc-8c30-9a5788bf7f35"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:8080/realms/springboot/protocol/openid-connect/token",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "realms",
+                    "springboot",
+                    "protocol",
+                    "openid-connect",
+                    "token"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "bf0c4594-ec80-4733-b08f-8a235bd1b73e"
+        },
+        {
+          "name": "Get token by refresh token",
+          "id": "73eddd40-b8e9-4d14-8991-0b0d735a910f",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "grant_type",
+                  "value": "refresh_token",
+                  "type": "text",
+                  "uuid": "04c22fc3-5f97-46b0-9699-76befd12060e"
+                },
+                {
+                  "key": "client_id",
+                  "value": "spring",
+                  "type": "text",
+                  "uuid": "42760f7a-2e4a-46a7-9b42-632c9a8c4993"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "XDRyKMqsg6Y7MAqs0fC5n1v4WRB3WbPP",
+                  "type": "text",
+                  "uuid": "2b10e2fb-c653-4f30-ae81-583b04fbcac7"
+                },
+                {
+                  "key": "refresh_token",
+                  "value": "eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhNzAzZDJjMS00MWRkLTRmZTEtOGUwNC02NTEwZjVmMWUwYTIifQ.eyJleHAiOjE3NjY4OTU5ODAsImlhdCI6MTc2Njg5NDE4MCwianRpIjoiYzdmMTQ3ZDMtOWEzZC03Y2Q0LWQ4ZjEtMDY5NjUzMjllMzJjIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9zcHJpbmdib290IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9zcHJpbmdib290Iiwic3ViIjoiM2Q0ODlkYTEtNDdkYS00MjdlLTg1ZjYtZWEyZmZhNGJkNzI2IiwidHlwIjoiUmVmcmVzaCIsImF6cCI6InNwcmluZyIsInNpZCI6IjNkZmJjYjNlLTBmYzEtOTlhMi01YTAyLTg0MGJmOWM5MTlmYyIsInNjb3BlIjoiYmFzaWMgYWNyIHByb2ZpbGUgd2ViLW9yaWdpbnMgZW1haWwgcm9sZXMifQ.hV6KC28QT9wLhZ1TQxdEgaexEIzg17BdUu9J7dXoIBuV59_NW90OQl9JX3uNO0F8m9ayTr3DVCx3vh7b9Ms8TQ",
+                  "type": "text",
+                  "uuid": "e87af83e-e3c9-4ae2-b407-31975ff97c8a"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/realms/springboot/protocol/openid-connect/token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "realms",
+                "springboot",
+                "protocol",
+                "openid-connect",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "e745c685-4e1a-4485-8817-375c95673933"
+    }
+  ]
+}

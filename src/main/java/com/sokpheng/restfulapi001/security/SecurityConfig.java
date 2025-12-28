@@ -8,6 +8,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,23 +28,11 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 // this for authentication and authorization
                 .authorizeHttpRequests(
-                        re->re.anyRequest().permitAll()
+                        re->re.anyRequest().authenticated()
                 );
-        // enable login form in the web browser
-        httpSecurity.formLogin(Customizer.withDefaults());
+        // integrate with authorization server (keycloak)
+        httpSecurity.oauth2ResourceServer(jwt->jwt.jwt(Customizer.withDefaults()));
         return httpSecurity.build();
     }
-    @Bean
-    public InMemoryUserDetailsManager detailsManager(){
-        UserDetails user = User
-                .withUsername("jame")
-                .password(passwordEncoder().encode("123"))
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(user);
-    }
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
+
 }
