@@ -34,3 +34,8 @@ file:
   upload-location: D:\\Multi-programming_languages\\Spring boot\\spring-boot-short-course\\restful-api-001\\uploads
   preview-path: localhost:9090/uploads/
   download-path: localhost:9090/
+
+#keycloak info config
+keycloak:
+  server-url: http://localhost:8080
+  main-realm: springboot

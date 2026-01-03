@@ -8,6 +8,7 @@ import com.sokpheng.restfulapi001.utils.ResponseTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
@@ -50,6 +51,7 @@ public class ProductController {
                 .build();
     }
     @DeleteMapping("/{uuid}")
+    @PreAuthorize("hasAnyRole('admin','super_admin')")
     public ResponseTemplate<Object> deleteProductByUuid(@PathVariable String uuid){
         return ResponseTemplate
                 .builder()

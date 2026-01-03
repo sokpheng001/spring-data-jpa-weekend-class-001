@@ -1,5 +1,6 @@
 package com.sokpheng.restfulapi001.mapper;
 
+import com.sokpheng.restfulapi001.model.dto.CreateCustomerDto;
 import com.sokpheng.restfulapi001.model.dto.CustomerResponseDto;
 import com.sokpheng.restfulapi001.model.entities.Customer;
 import org.mapstruct.Mapper;
@@ -9,4 +10,5 @@ import org.mapstruct.Mapper;
 public interface CustomerMapstruct {
     CustomerResponseDto
     mapFromCustomerToCustomerResponseDto(Customer customer);
+    Customer fromRequestToCustomer(CreateCustomerDto createCustomerDto);
 }

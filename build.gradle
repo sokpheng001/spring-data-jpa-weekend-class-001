@@ -43,6 +43,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'org.postgresql:postgresql'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    //
+    // https://mvnrepository.com/artifact/org.keycloak/keycloak-admin-client
+    implementation 'org.keycloak:keycloak-admin-client:26.0.7'
 }
 
 tasks.named('test') {

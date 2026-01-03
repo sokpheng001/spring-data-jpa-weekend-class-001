@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
@@ -19,7 +20,6 @@ import java.util.Date;
 @RequestMapping("/api/v1/customers")
 public class CustomController {
     private final CustomerService customerService;
-
     @GetMapping("/paginate")
     public ResponseTemplate<Object>
     getAllCustomersByPaginate(Pageable pageable){
@@ -64,6 +64,7 @@ public class CustomController {
                 .build();
     }
     @DeleteMapping("/{uuid}")
+    @PreAuthorize("hasAnyRole('admin','super_admin')")
     public ResponseTemplate<Object> deleteCustomerByUuid(@PathVariable String uuid){
         return ResponseTemplate
                 .builder()

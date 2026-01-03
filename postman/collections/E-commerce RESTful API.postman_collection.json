@@ -13,6 +13,16 @@
           "name": "Get All Customers",
           "id": "252357e7-783a-4614-98bc-53d2614125bb",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItOG9FV2xjYzdPRnBsWExULUNtWi1NOWl0SzRNZGhXOHRmOGlsdXdhNkZrIn0.eyJleHAiOjE3Njc0MjQ0MzksImlhdCI6MTc2NzQyNDA3OSwianRpIjoib25ydHJvOjFiODQ0ZDhjLTY3NzktNWVkYS0yMmIzLTdmM2Y5ZTliYzAxNSIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvc3ByaW5nYm9vdCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJkNTMxNjQ3Yy1kOWE5LTQxODctYmIwYS05N2E3ZTM2YmE3YjkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzcHJpbmctYm9vdCIsInNpZCI6IjAzNjViYjViLTkzMTMtMGI0ZC0yOGNhLWY4ODczZTExYmVjZSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLXNwcmluZ2Jvb3QiXX0sInJlc291cmNlX2FjY2VzcyI6eyJzcHJpbmctYm9vdCI6eyJyb2xlcyI6WyJhZG1pbiIsInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiamVsbHkga28iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJqZWxseSIsImdpdmVuX25hbWUiOiJqZWxseSIsImZhbWlseV9uYW1lIjoia28iLCJlbWFpbCI6ImplbGx5MTIzQGdtYWlsLmNvbSJ9.hwle07rh9rseUALyEG2N8SpYaaZxevHy0ucdMc0r4qP2ipAI4NDSP5gP4p6LhUnBqovTYbeQ7JDJtWfVHbGU7whqJTyj3l220oseqtXVsZlggvcVAnH4m3NYVZkcSJc-sJj_Se_lSu4wGqQGRFI88DNhQxUjKIMDseFiQJ76UC3A-adIaDIiQLux79WnFuf3SJuDKY3C32p243evg6RZ-FVgJxVhPY4fd3zLG1yCKW0UFqury7SFTYED0tclWG6OVjf0qFqMr-XyOreD4qD0Y8PNqh1bYNB7QHztz47RqN7wDXMsW4qy_Mj9YlbdvYnwKGOjvRfhSLUjbTqs1K_hOA",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
