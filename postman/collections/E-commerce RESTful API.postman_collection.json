@@ -13,16 +13,6 @@
           "name": "Get All Customers",
           "id": "252357e7-783a-4614-98bc-53d2614125bb",
           "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItOG9FV2xjYzdPRnBsWExULUNtWi1NOWl0SzRNZGhXOHRmOGlsdXdhNkZrIn0.eyJleHAiOjE3Njc0MjQ0MzksImlhdCI6MTc2NzQyNDA3OSwianRpIjoib25ydHJvOjFiODQ0ZDhjLTY3NzktNWVkYS0yMmIzLTdmM2Y5ZTliYzAxNSIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvc3ByaW5nYm9vdCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJkNTMxNjQ3Yy1kOWE5LTQxODctYmIwYS05N2E3ZTM2YmE3YjkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzcHJpbmctYm9vdCIsInNpZCI6IjAzNjViYjViLTkzMTMtMGI0ZC0yOGNhLWY4ODczZTExYmVjZSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLXNwcmluZ2Jvb3QiXX0sInJlc291cmNlX2FjY2VzcyI6eyJzcHJpbmctYm9vdCI6eyJyb2xlcyI6WyJhZG1pbiIsInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiamVsbHkga28iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJqZWxseSIsImdpdmVuX25hbWUiOiJqZWxseSIsImZhbWlseV9uYW1lIjoia28iLCJlbWFpbCI6ImplbGx5MTIzQGdtYWlsLmNvbSJ9.hwle07rh9rseUALyEG2N8SpYaaZxevHy0ucdMc0r4qP2ipAI4NDSP5gP4p6LhUnBqovTYbeQ7JDJtWfVHbGU7whqJTyj3l220oseqtXVsZlggvcVAnH4m3NYVZkcSJc-sJj_Se_lSu4wGqQGRFI88DNhQxUjKIMDseFiQJ76UC3A-adIaDIiQLux79WnFuf3SJuDKY3C32p243evg6RZ-FVgJxVhPY4fd3zLG1yCKW0UFqury7SFTYED0tclWG6OVjf0qFqMr-XyOreD4qD0Y8PNqh1bYNB7QHztz47RqN7wDXMsW4qy_Mj9YlbdvYnwKGOjvRfhSLUjbTqs1K_hOA",
-                  "type": "string"
-                }
-              ]
-            },
             "method": "GET",
             "header": [],
             "url": {
@@ -208,7 +198,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"categoryName\":\"Food\"\r\n}",
+              "raw": "{\r\n    \"categoryName\":\"Drink\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -301,7 +291,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"productName\":\"Milk tea\",\r\n    \"expireDate\":\"2026-05-06\",\r\n    \"categoriesNames\":[\"Snack\",\"Drink\"]\r\n}",
+              "raw": "{\r\n    \"productName\":\"Noodle of City\",\r\n    \"expireDate\":\"2026-05-06\",\r\n    \"categoriesNames\":[\"Food\"]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -327,21 +317,6 @@
           "name": "Get All Products",
           "id": "85781231-4ea7-4bbf-b8d4-6e5180e455f6",
           "request": {
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "password",
-                  "value": "5a6df9ed-8dc4-4420-a53d-0f9e383e97a9",
-                  "type": "string"
-                },
-                {
-                  "key": "username",
-                  "value": "user",
-                  "type": "string"
-                }
-              ]
-            },
             "method": "GET",
             "header": [],
             "url": {
@@ -469,7 +444,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"orderName\":\"Drink Order\",\r\n    \"location\":\"40.7128, -74.0060\",\r\n    \"productUuids\":[\"345597e8-d4ca-4c64-b786-cd608713caa3\",\"d333facf-c40a-4add-b7bf-48e06b8d5543\"],\r\n    \"customerUuid\":\"9ae0f9d8-8ae7-4797-aa8c-cbfe76fed344\"\r\n}",
+              "raw": "{\r\n    \"orderName\":\"Snack Order\",\r\n    \"location\":\"40.7128, -74.0060\",\r\n    \"productUuids\":[\"8d3a9369-3acb-4b3d-b725-e5676fc84b91\",\"26479a92-cfff-4513-b58c-a8c7c371e005\"],\r\n    \"customerUuid\":\"fbd01c7e-c54e-4629-96e3-b7ea8038767b\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -498,7 +473,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "localhost:9090/api/v1/orders/customer=db9d5dd1-c214-425b-9616-62fbe935316c",
+              "raw": "localhost:9090/api/v1/orders/customer=fbd01c7e-c54e-4629-96e3-b7ea8038767b",
               "host": [
                 "localhost"
               ],
@@ -507,7 +482,7 @@
                 "api",
                 "v1",
                 "orders",
-                "customer=db9d5dd1-c214-425b-9616-62fbe935316c"
+                "customer=fbd01c7e-c54e-4629-96e3-b7ea8038767b"
               ]
             }
           },
@@ -678,6 +653,21 @@
               "name": "Get Token By Password",
               "id": "e0702290-8b48-45f5-bd98-365e23e71306",
               "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "password",
+                      "value": "FbIz056Mg8w6ns8cbd5zb1yA0XqpJAhF",
+                      "type": "string"
+                    },
+                    {
+                      "key": "username",
+                      "value": "spring-boot",
+                      "type": "string"
+                    }
+                  ]
+                },
                 "method": "POST",
                 "header": [],
                 "body": {
@@ -691,7 +681,7 @@
                     },
                     {
                       "key": "username",
-                      "value": "jelly",
+                      "value": "jame",
                       "type": "text",
                       "uuid": "0844083f-b931-41fb-bde4-b4ba315ed714"
                     },
@@ -1000,6 +990,72 @@
         }
       ],
       "id": "6e65f00b-2cc6-46db-9f90-f51f50f9110a"
+    },
+    {
+      "name": "AuthService",
+      "item": [
+        {
+          "name": "Register user in keycloak",
+          "id": "55f44a70-0666-4766-a3c3-5dc3d3f79d80",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"customerName\":\"vitou\",\r\n    \"email\":\"piu9066@gmail.com\",\r\n    \"password\":\"Sopi&*56\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:9090/api/v1/auth/register",
+              "host": [
+                "localhost"
+              ],
+              "port": "9090",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Forgot Password",
+          "id": "26090417-e6c2-4861-a31b-bb570192bc3a",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "localhost:9090/api/v1/auth/forget-password?email=piu9066@gmail.com",
+              "host": [
+                "localhost"
+              ],
+              "port": "9090",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "forget-password"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "piu9066@gmail.com",
+                  "uuid": "689fd046-54e1-42f7-a2ef-6ba75ca739b0"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "bb901f72-9f3f-4fbf-a676-c7358ddf0b62"
     }
   ]
 }

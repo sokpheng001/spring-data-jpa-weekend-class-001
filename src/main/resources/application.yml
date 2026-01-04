@@ -39,3 +39,6 @@ file:
 keycloak:
   server-url: http://localhost:8080
   main-realm: springboot
+  client-id: spring-boot
+  client-secrete: NXAC1RTiuI0eSNWCU4eAUIqFUaUC5ZfK
+

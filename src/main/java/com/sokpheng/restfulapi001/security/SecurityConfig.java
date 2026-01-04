@@ -13,6 +13,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 @Configuration
@@ -30,9 +36,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 // this for authentication and authorization
                 .authorizeHttpRequests(
-                        re->re
-                                .requestMatchers(HttpMethod.DELETE,"/api/v1/customers/**")
-                                .hasAnyRole("admin","super_admin")
+                        re->re.anyRequest().permitAll()
                 );
         // integrate with authorization server (keycloak)
 //        httpSecurity.oauth2ResourceServer(jwt->jwt.jwt(Customizer.withDefaults()));
@@ -40,5 +44,20 @@ public class SecurityConfig {
                 convert->convert.jwtAuthenticationConverter(jwtConverterConfigure))
         );
         return httpSecurity.build();
+    }
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("htt://localhost:3000","sokpheng.com")); // Add your frontend URLs
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With"));
+        configuration.setExposedHeaders(List.of("Authorization"));
+        configuration.addAllowedOriginPattern("*"); // Temporarily allow all to test
+        configuration.setAllowCredentials(true);
+        configuration.setMaxAge(3600L);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 }

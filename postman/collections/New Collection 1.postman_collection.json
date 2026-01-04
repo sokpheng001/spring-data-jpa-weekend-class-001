@@ -1,0 +1,81 @@
+{
+  "info": {
+    "_postman_id": "9be03079-4837-49e3-9924-34c668ce9e0d",
+    "name": "Mocking",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Mock01",
+      "id": "ed5a711c-76ca-4741-8d2c-792853b97ee7",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"customerName\":\"jame\", // blank\r\n    \"email\":\"piu9066@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9090/api/v1/auth/register",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "api",
+            "v1",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Mock2",
+      "id": "4f81bbe8-3ae6-401f-99fc-c342263c87fd",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJNX3JQZ0ZiaDZPWk0zSGxWZGQ4NnFFOEVzMHMwcVVPZHluMkxvMjVrb0xvIn0.eyJleHAiOjE3Njc1MDQ1MTYsImlhdCI6MTc2NzUwNDIxNiwianRpIjoib25ydHJvOjlmNjU5ZjlkLTQ1MWEtNWU5Zi01MTlkLWUzZDlkOWMyYTczNCIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvc3ByaW5nYm9vdCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJhMzc2OGEzNS0xZDNkLTQxZTAtYjgwOS1hMjhhMjJkNTliNmMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzcHJpbmctYm9vdCIsInNpZCI6ImIxMWJmNWU2LWM0MzktMGM0NS0xZTRiLWYwZTc4MzkyNjgxMyIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtc3ByaW5nYm9vdCJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InNwcmluZy1ib290Ijp7InJvbGVzIjpbImFkbWluIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJqYW1lIGphbWUiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJqYW1lIiwiZ2l2ZW5fbmFtZSI6ImphbWUiLCJmYW1pbHlfbmFtZSI6ImphbWUiLCJlbWFpbCI6InBpdTkwNjZAZ21haWwuY29tIn0.En1_oyAPyb9V0OsKMdPBBXSY8akUmsQcJS16HI_O-K1MMoOv5HEqPnm9LdB-OV3Kf5E43QnEm985qZM82gIgnrYoZbc5uSvYctYrLESpMOuYjSh8-Qfjl_6ZQfUaTI5ycbQPjNLpECOuyumS2VF3wuCKtXWFSt1aM-wDX8Gj_0GUp5h74kjBzNPmx4g1GUEL-g9-twHFijANoOWmup_TbwfrGeDMsN2PETfH7MrLsGvD2ecJbLAlXkP7kl8icN6jrx_LZ4ibG-3qUhSYU8p8DuBKQcykbUEdv0zB9mmi4WIYTe1JGnY0Gv6_0a3ymP2nqHFICamn2B81l-vPUsBHCQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"piu9066@gmail.com\",\r\n    \"newPassword\":\"123\",\r\n    \"confirmPassword\":\"123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9090/api/v1/auth/reset-password",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "api",
+            "v1",
+            "auth",
+            "reset-password"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

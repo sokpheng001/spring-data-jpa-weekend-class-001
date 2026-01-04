@@ -3,7 +3,6 @@ package com.sokpheng.restfulapi001.controller;
 import com.sokpheng.restfulapi001.model.dto.OrderCreateDto;
 import com.sokpheng.restfulapi001.model.service.OrderService;
 import com.sokpheng.restfulapi001.utils.ResponseTemplate;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.Instant;
 import java.util.Date;
 
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/orders")
