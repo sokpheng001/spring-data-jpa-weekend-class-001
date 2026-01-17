@@ -46,6 +46,9 @@ dependencies {
     //
     // https://mvnrepository.com/artifact/org.keycloak/keycloak-admin-client
     implementation 'org.keycloak:keycloak-admin-client:26.0.7'
+    //
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.7'
+
 }
 
 tasks.named('test') {
